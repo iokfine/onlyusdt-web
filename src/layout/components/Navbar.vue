@@ -14,7 +14,7 @@
 <!--          <router-link to="/profile/index">-->
 <!--            <el-dropdown-item>个人中心</el-dropdown-item>-->
 <!--          </router-link>-->
-          <el-dropdown-item>修改密码</el-dropdown-item>
+<!--          <el-dropdown-item>修改密码</el-dropdown-item>-->
           <el-dropdown-item divided @click.native="doLogout">
             <span style="display:block;">退出</span>
           </el-dropdown-item>

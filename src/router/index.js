@@ -14,7 +14,8 @@ export const constantRoutes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/login'),
+    // component: () => import('@/views/login'),
+    component: () => import('@/views/premintbg/login'),
     hidden: true
   },
   {
@@ -24,67 +25,24 @@ export const constantRoutes = [
     children: [{
       path: 'dashboard',
       name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: {title: '控制中心', icon: 'dashboard' }
+      component: () => import('@/views/premintbg/dashboard'),
+      meta: {title: '仪表盘', icon: 'dashboard' }
     },
-      {
-        path: '/coin',
-        name: 'market',
-        meta: {title: '行情推送'},
-        hidden: true,
-        component: () => import('@/views/strategy/coin/index'),
-      },
-      {
-        path: '/maTrade',
-        name: 'maLeverTrade',
-        meta: {title: '交易策略'},
-        hidden: true,
-        component: () => import('@/views/strategy/maTrade'),
-      }
-      , {
-        path: '/swapGridTrade',
-        name: 'swapGridTrade',
-        meta: {title: '[永续]网格策略'},
-        hidden: true,
-        component: () => import('@/views/strategy/swapGridTrade'),
-      },
-      {
-        path: '/mock',
-        name: 'mock',
-        meta: {title: '模拟测试'},
-        hidden: true,
-        component: () => import('@/views/strategy/mock'),
-      },
-      {
-        path: '/spotGridTrade',
-        name: 'spotGridTrade',
-        meta: {title: '[现货]网格交易'},
-        hidden: true,
-        component: () => import('@/views/strategy/spotGridTrade'),
-      },
-
     ]
   },
   {
-    path: '/exchange',
+    path: '/puser',
     component: Layout,
-    redirect: '/ex',
+    redirect: '/pusers',
     children: [
       {
-        path: '/ex',
-        name: 'exchange',
-        meta: {title: '交易所',icon:'eye-open'},
-        component: () => import('@/views/exchange/index'),
+        path: '/pusers',
+        name: 'pusers',
+        meta: {title: '用户管理',icon:'eye-open'},
+        component: () => import('@/views/premintbg/pusers'),
       },
     ]
   },
-  //
-  // {
-  //   path: '/coin',
-  //   meta: { title: 'coin' },
-  //   hidden: true,
-  //   component: () => import('@/views/coin/index'),
-  // },
 
   // 404 page must be placed at the end !!!
   {path: '*', redirect: '/404', hidden: true}

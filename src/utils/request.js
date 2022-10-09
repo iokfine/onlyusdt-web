@@ -42,10 +42,7 @@ service.interceptors.response.use(
       reader.readAsText(error.response.data, 'utf-8')
       reader.onload = function(e) {
         const errorMsg = JSON.parse(reader.result).message
-        Notification.error({
-          title: errorMsg,
-          duration: 5000
-        })
+
       }
     } else {
       let code = 0
@@ -53,21 +50,14 @@ service.interceptors.response.use(
         code = error.response.data.status
       } catch (e) {
         if (error.toString().indexOf('Error: timeout') !== -1) {
-          Notification.error({
-            title: '网络请求超时',
-            duration: 5000
-          })
+
           return Promise.reject(error)
         }
       }
       console.log(code)
       if (code) {
         if (code === 401) {
-          // store.dispatch('LogOut').then(() => {
-          //   // 用户登录界面提示
-          //   Cookies.set('point', 401)
-          //   location.reload()
-          // })
+
           console.log(code)
           router.push({ path: '/login' })
         } else if (code === 403) {
@@ -75,17 +65,11 @@ service.interceptors.response.use(
         } else {
           const errorMsg = error.response.data.message
           if (errorMsg !== undefined) {
-            Notification.error({
-              title: errorMsg,
-              duration: 5000
-            })
+
           }
         }
       } else {
-        Notification.error({
-          title: '接口请求失败',
-          duration: 5000
-        })
+
       }
     }
     return Promise.reject(error)
